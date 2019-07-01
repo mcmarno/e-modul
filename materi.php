@@ -9,7 +9,7 @@ if($_SESSION['level']!="guru") {
     header("location:login.php");
 }
 include_once("config.php");
-$result = mysqli_query($conn, "SELECT * FROM materi ORDER BY id_materi ASC");
+$result = mysqli_query($conn, "SELECT * FROM materi ORDER BY id_materi DESC");
 
 
 ?>

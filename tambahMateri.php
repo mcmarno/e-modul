@@ -128,7 +128,7 @@ if($_SESSION['level']!="guru") {
                                     <div class="title-block">
                                         <h3 class="title"> Tambah Data Materi </h3>
                                     </div>
-                                    <form id="tambah-form" action="prosesTambahMateri.php" method="POST" enctype="multipart/form-data">
+                                    <form id="tambah-form" action="prosesTambahMateri.php" method="POST">
                                         <div class="form-group">
                                             <label class="control-label">Judul</label>
                                             <input type="text" class="form-control underlined" name="judul" ></div>
