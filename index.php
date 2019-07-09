@@ -24,6 +24,12 @@ if($_SESSION['level']!="guru") {
         <link rel="stylesheet" href="css/vendor.css">
         <!-- Theme initialization -->
         <link rel="stylesheet" href="css/app-blue.css">
+        <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.carousel.min.css">
+        <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.theme.default.css">
+        <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.theme.min.css">
+        <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.theme.green.css">
+        <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.theme.green.min.css">
     </head>
     <body>
         <div class="main-wrapper">
@@ -126,11 +132,22 @@ if($_SESSION['level']!="guru") {
                                 <div class="card card-info">
                                     <div class="card-header">
                                         <div class="header-block">
-                                            <p class="title"> Selamat Datang Di Sistem Informasi Keuangan Remaja Masjid </p>
+                                            <p class="title"> Selamat Datang Di Modul Pembelajaran Online Bahasa Pemrograman C++</p>
+                                            <p><b>SMK NEGERI 1 GEMPOL</b></p>
                                         </div>
                                     </div>
                                     <div class="card-block">
-                                        <p>Sistem ini dibuat untuk mempermudah informasi debit - kredit keuangan masjid.</p>
+                                        <div class="container" >
+                                            
+                                            <div class="col-md-12">
+                                                <div class="owl-carousel owl-theme">
+                                                    <img class="owl-lazy" data-src="assets/2.jpg" alt="">
+                                                    <img class="owl-lazy" data-src="assets/3.jpg" alt="">
+                                                    <img class="owl-lazy" data-src="assets/4.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
                                     </div>
                                     <div class="card-footer"> have a nice day</div>
                                 </div>
@@ -167,5 +184,18 @@ if($_SESSION['level']!="guru") {
         </script>
         <script src="js/vendor.js"></script>
         <script src="js/app.js"></script>
+        <script src="owl/dist/owl.carousel.js"></script>
+        <script src="owl/dist/owl.carousel.min.js"></script>
+        <script type="text/javascript">
+            $('.owl-carousel').owlCarousel({
+                items:1,
+                lazyLoad:true,
+                loop:true,
+                margin:10,
+                autoplay:true,
+                autoplayTimeout:2000,
+                autoplayHoverPause:true,
+            });
+        </script>
     </body>
 </html>
