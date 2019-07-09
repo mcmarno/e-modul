@@ -13,7 +13,7 @@ $user = $_SESSION['username'];
 $ql = mysqli_query($conn, "SELECT * FROM users WHERE username = '$user'");
 $sc = mysqli_fetch_array($ql);
 $sesi = $sc['sesi'];
-if ($sesi == 'ada')
+if ($sesi == 1)
 {
     $kode = $_GET['id'];
     $result = mysqli_query($conn, "SELECT * FROM evaluasi WHERE kode_soal = $kode");

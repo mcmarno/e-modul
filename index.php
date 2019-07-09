@@ -27,7 +27,7 @@ if($_SESSION['level']!="guru") {
         <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.carousel.css">
         <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.carousel.min.css">
         <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.theme.default.css">
-        <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.theme.min.css">
+        <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.theme.default.min.css">
         <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.theme.green.css">
         <link rel="stylesheet" type="text/css" href="owl/dist/assets/owl.theme.green.min.css">
     </head>
