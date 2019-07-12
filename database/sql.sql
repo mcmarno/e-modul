@@ -86,11 +86,11 @@ CREATE TABLE `nilai` (
   `nilai_tugas` varchar(5) DEFAULT NULL,
   `nilai_evaluasi` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`id_nilai`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `nilai` */
 
-insert  into `nilai`(id_nilai,no_induk,nilai_tugas,nilai_evaluasi) values (1,'001','90','20'),(2,'002',NULL,'10');
+insert  into `nilai`(id_nilai,no_induk,nilai_tugas,nilai_evaluasi) values (1,'001','90','20'),(2,'002',NULL,'100'),(3,'002',NULL,'100');
 
 /*Table structure for table `siswa` */
 
@@ -101,11 +101,11 @@ CREATE TABLE `siswa` (
   `nis` varchar(10) DEFAULT NULL,
   `nama` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_siswa`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `siswa` */
 
-insert  into `siswa`(id_siswa,nis,nama) values (13,'001','dela');
+insert  into `siswa`(id_siswa,nis,nama) values (13,'001','dela'),(14,'002','a');
 
 /*Table structure for table `soal` */
 
@@ -153,12 +153,13 @@ CREATE TABLE `users` (
   `username` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `level` varchar(10) DEFAULT NULL,
+  `sesi` int(1) DEFAULT '1',
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 
-insert  into `users`(id_user,nis,username,password,level) values (1,NULL,'guruku','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','guru'),(10,'001','dela','8e0eda3adc1e2bc70837a3b59785c702c33c965f03162822abdfab58cff7bc28','siswa');
+insert  into `users`(id_user,nis,username,password,level,sesi) values (1,NULL,'guruku','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','guru',1),(10,'001','dela','8e0eda3adc1e2bc70837a3b59785c702c33c965f03162822abdfab58cff7bc28','siswa',1),(11,'002','a','ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb','siswa',0);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
