@@ -124,6 +124,6 @@ $nis = $data['nis'];
 
 $query = mysqli_query($conn, "UPDATE nilai SET nilai_evaluasi = '$nilai' WHERE no_induk = '$nis'");
 $query1 = mysqli_query($conn, "UPDATE users SET sesi = '0' WHERE nis = '$nis'");
-header("location:nilaiSiswa.php");
+header("location:nilaiEvaluasi.php");
 }
 ?>

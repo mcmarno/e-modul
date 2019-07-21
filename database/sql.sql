@@ -46,6 +46,22 @@ CREATE TABLE `hasil` (
 
 insert  into `hasil`(id_hasil,nis,nama_tugas,berkas) values (7,'001','yyut','001_yyut_Silabus_Programming_Essentials_in_Python__OA_.pdf');
 
+/*Table structure for table `hasil_latihan` */
+
+DROP TABLE IF EXISTS `hasil_latihan`;
+
+CREATE TABLE `hasil_latihan` (
+  `id_hasil_latihan` int(11) NOT NULL AUTO_INCREMENT,
+  `nis` varchar(100) DEFAULT NULL,
+  `nama_latihan` varchar(100) DEFAULT NULL,
+  `berkas` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_hasil_latihan`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Data for the table `hasil_latihan` */
+
+insert  into `hasil_latihan`(id_hasil_latihan,nis,nama_latihan,berkas) values (2,'002','a','002_a_Javascript Guide.pdf');
+
 /*Table structure for table `latihan` */
 
 DROP TABLE IF EXISTS `latihan`;
@@ -59,7 +75,7 @@ CREATE TABLE `latihan` (
 
 /*Data for the table `latihan` */
 
-insert  into `latihan`(id_latihan,nama_latihan,isi) values (1,'php','<p>contoh syntax php adalah :</p><p><link></link></p><p><script src=\"js.js</script<!--?php echo \" heloo\";=\"\" ?--=\"\"></p><p>cin</p></script></p>'),(4,'a','<p>a</p>'),(5,'','');
+insert  into `latihan`(id_latihan,nama_latihan,isi) values (1,'php','<p>contoh syntax php adalah :</p><p><link></link></p><p><script src=\"js.js</script<!--?php echo \" heloo\";=\"\" ?--=\"\"></p><p>cin</p></script></p>'),(4,'a','<p>a</p>');
 
 /*Table structure for table `materi` */
 
@@ -85,12 +101,13 @@ CREATE TABLE `nilai` (
   `no_induk` varchar(10) DEFAULT NULL,
   `nilai_tugas` varchar(5) DEFAULT NULL,
   `nilai_evaluasi` varchar(5) DEFAULT NULL,
+  `nilai_latihan` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`id_nilai`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `nilai` */
 
-insert  into `nilai`(id_nilai,no_induk,nilai_tugas,nilai_evaluasi) values (1,'001','90','20'),(2,'002',NULL,'100'),(3,'002',NULL,'100');
+insert  into `nilai`(id_nilai,no_induk,nilai_tugas,nilai_evaluasi,nilai_latihan) values (1,'001','90','20','90'),(2,'002',NULL,'80',NULL);
 
 /*Table structure for table `siswa` */
 
@@ -159,7 +176,7 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(id_user,nis,username,password,level,sesi) values (1,NULL,'guruku','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','guru',1),(10,'001','dela','8e0eda3adc1e2bc70837a3b59785c702c33c965f03162822abdfab58cff7bc28','siswa',1),(11,'002','a','ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb','siswa',0);
+insert  into `users`(id_user,nis,username,password,level,sesi) values (1,NULL,'guruku','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','guru',1),(10,'001','dela','8e0eda3adc1e2bc70837a3b59785c702c33c965f03162822abdfab58cff7bc28','siswa',1),(11,'002','a','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','siswa',0);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

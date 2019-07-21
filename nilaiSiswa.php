@@ -93,7 +93,10 @@ $nilai = mysqli_fetch_array($n);
                                             <a href="tugasSiswa.php"> Tugas </a>
                                         </li>
                                         <li>
-                                            <a href="hasilSiswa.php"> Hasil Laporan </a>
+                                            <a href="hasilSiswa.php"> Upload Hasil Tugas </a>
+                                        </li>
+                                        <li>
+                                            <a href="hasilLatihan.php"> Upload Hasil Latihan </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -104,6 +107,10 @@ $nilai = mysqli_fetch_array($n);
                                 <li class="">
                                     <a href="nilaiSiswa.php">
                                         <i class="fa fa-file-text"></i> Nilai </a>
+                                </li>
+                                <li class="">
+                                    <a href="auth.php">
+                                        <i class="fa fa-phone"></i> Author </a>
                                 </li>
                             </ul>
                         </nav>
@@ -131,17 +138,19 @@ $nilai = mysqli_fetch_array($n);
                                         </div>
                                     </div>
                                     <?php
+                                    $d = $nilai['nilai_latihan'];
                                     $a = $nilai['nilai_tugas'];
                                     $b = $nilai['nilai_evaluasi'];
-                                    $c = $a + $b;
-                                    $r = $c / 2 ;
+                                    $c = $a + $b + $d;
+                                    $r = $c / 3 ;
                                     ?>
                                     <div class="card-block">
                                         NO INDUK : <?php echo $nis ?></p>
                                         NAMA : <?php echo $_SESSION['username'] ?></p>
+                                        NILAI LATIHAN : <?php echo $nilai['nilai_latihan'] ?></p>
                                         NILAI TUGAS : <?php echo $nilai['nilai_tugas'] ?></p>
                                         NILAI EVALUASI : <?php echo $nilai['nilai_evaluasi'] ?></p>
-                                        RATA - RATA : <?php echo $r ?>
+                                        RATA - RATA : <?php echo number_format($r, 2) ?>
                                     </div>
                                     <?php
                                     if($r >= 90)
@@ -171,8 +180,8 @@ $nilai = mysqli_fetch_array($n);
                     <div></div>
                     <div class="footer-block author">
                         <ul>
-                            <li> created by
-                                <a href="#">Widya Ayuningtyas</a>
+                            <li>
+                                Copyright &copy 2019 Pemrograman dasar
                             </li>
                         </ul>
                     </div>

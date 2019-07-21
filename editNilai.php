@@ -8,10 +8,13 @@ if($_SESSION['level']==""){
 if($_SESSION['level']!="guru") {
     header("location:login.php");
 }
-include("config.php");
-$id = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM materi WHERE id_materi = $id");
-$data = mysqli_fetch_array($query);
+
+include "config.php";
+$id = $_GET['id'];      //get the goods which will updated
+$query = "SELECT * FROM nilai WHERE id_nilai = '$id'";  //get the data that will be updated
+$hasil = mysqli_query($conn, $query);
+  //echo "hasil ==> ".$hasil;
+$data  = mysqli_fetch_array($hasil);
 
 ?>
 <!doctype html>
@@ -28,7 +31,6 @@ $data = mysqli_fetch_array($query);
         <link rel="stylesheet" href="css/vendor.css">
         <!-- Theme initialization -->
         <link rel="stylesheet" href="css/app-blue.css">
-        <link rel="stylesheet" type="text/css" href="summernote-master/dist/summernote-lite.css">
     </head>
     <body>
         <div class="main-wrapper">
@@ -133,15 +135,28 @@ $data = mysqli_fetch_array($query);
                 <div class="mobile-menu-handle"></div>
                 <article class="content forms-page">
                  <section class="section">
-                        <div class="row">
-                            <div class="col-md-12">
+                        <div class="row sameheight-container">
+                            <div class="col-md-6">
                                 <div class="card card-block sameheight-item">
-                                    <form id="tambah-form" action="prosesTambahMateri.php" method="POST" enctype="multipart/form-data">
+                                    <div class="title-block">
+                                        <h3 class="title"> Edit Data Nilai Siswa </h3>
+                                        <p>Perhatikan jenis nilai sebelum mulai memasukkan data!.</p>
+                                    </div>
+                                    <form id="tambah-form" action="prosesEditNilaiSiswa.php" method="POST">
                                         <div class="form-group">
-                                           <h3><b><?php echo $data['nama'] ?></b></h3>
-                                        </div>
+                                            <label class="control-label">NIS</label>
+                                            <input type="text" class="form-control underlined" name="no_induk" value="<?php echo $data['no_induk'] ?>" readonly="readonly"></div>
                                         <div class="form-group">
-                                            <?php echo $data['isi'] ?>
+                                            <label class="control-label">Nilai Latihan</label>
+                                            <input type="text" class="form-control underlined" name="nilai_latihan" value="<?php echo $data['nilai_latihan'] ?>"></div>
+                                        <div class="form-group">
+                                            <label class="control-label">Nilai Tugas</label>
+                                            <input type="text" class="form-control underlined" name="nilai_tugas" value="<?php echo $data['nilai_tugas'] ?>"></div>
+                                        <div class="form-group">
+                                            <label class="control-label">Nilai Evaluasi</label>
+                                            <input type="text" class="form-control underlined" name="nilai_evaluasi" value="<?php echo $data['nilai_evaluasi'] ?>" readonly="readonly"></div>
+                                        <div class="form-group col-md-4" >
+                                            <button type="submit" class="btn btn-block btn-primary">Simpan</button>
                                         </div>
                                     </form>
                                 </div>
@@ -178,13 +193,5 @@ $data = mysqli_fetch_array($query);
         </script>
         <script src="js/vendor.js"></script>
         <script src="js/app.js"></script>
-        <script src="summernote-master/dist/summernote-lite.js"></script>
-        <script>
-          $(document).ready(function() {
-            $('.summernote').summernote({
-                airMode: false
-            });
-          })
-    </script>
     </body>
 </html>

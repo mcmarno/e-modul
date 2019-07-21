@@ -85,13 +85,20 @@ if($_SESSION['level']!="guru") {
                                             <a href="tugas.php"> Tugas </a>
                                         </li>
                                         <li>
-                                            <a href="hasil.php"> Hasil Laporan </a>
+                                            <a href="hasil.php"> Hasil Tugas </a>
+                                        </li>
+                                        <li>
+                                            <a href="hasil-latihan.php"> Hasil Latihan </a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="">
                                     <a href="evaluasi.php">
                                         <i class="fa fa-bar-chart"></i> Evaluasi  </a>
+                                </li>
+                                <li class="">
+                                    <a href="nilai.php">
+                                        <i class="fa fa-list-alt"></i> Nilai </a>
                                 </li>
                                 <li class="">
                                     <a href="siswa.php">
@@ -148,8 +155,8 @@ if($_SESSION['level']!="guru") {
                     <div></div>
                     <div class="footer-block author">
                         <ul>
-                            <li> created by
-                                <a href="#">Widya Ayuningtyas</a>
+                            <li>
+                                Copyright &copy 2019 Pemrograman dasar
                             </li>
                         </ul>
                     </div>

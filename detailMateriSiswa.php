@@ -87,7 +87,10 @@ $data = mysqli_fetch_array($query);
                                             <a href="tugasSiswa.php"> Tugas </a>
                                         </li>
                                         <li>
-                                            <a href="hasilSiswa.php"> Hasil Laporan </a>
+                                            <a href="hasilSiswa.php"> Upload Hasil Tugas </a>
+                                        </li>
+                                        <li>
+                                            <a href="hasilLatihan.php"> Upload Hasil Latihan </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -98,6 +101,10 @@ $data = mysqli_fetch_array($query);
                                 <li class="">
                                     <a href="nilaiSiswa.php">
                                         <i class="fa fa-file-text"></i> Nilai </a>
+                                </li>
+                                <li class="">
+                                    <a href="auth.php">
+                                        <i class="fa fa-phone"></i> Author </a>
                                 </li>
                             </ul>
                         </nav>
@@ -136,8 +143,8 @@ $data = mysqli_fetch_array($query);
                     <div></div>
                     <div class="footer-block author">
                         <ul>
-                            <li> created by
-                                <a href="#">Widya Ayuningtyas</a>
+                            <li>
+                                Copyright &copy 2019 Pemrograman dasar
                             </li>
                         </ul>
                     </div>

@@ -8,10 +8,10 @@ if($_SESSION['level']==""){
 if($_SESSION['level']!="guru") {
     header("location:login.php");
 }
-include("config.php");
-$id = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM materi WHERE id_materi = $id");
-$data = mysqli_fetch_array($query);
+include_once("config.php");
+$nama = $_GET['id'];
+$result = mysqli_query($conn, "SELECT * FROM hasil_latihan WHERE nama_latihan = '$nama'");
+
 
 ?>
 <!doctype html>
@@ -28,7 +28,7 @@ $data = mysqli_fetch_array($query);
         <link rel="stylesheet" href="css/vendor.css">
         <!-- Theme initialization -->
         <link rel="stylesheet" href="css/app-blue.css">
-        <link rel="stylesheet" type="text/css" href="summernote-master/dist/summernote-lite.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
     </head>
     <body>
         <div class="main-wrapper">
@@ -131,24 +131,48 @@ $data = mysqli_fetch_array($query);
                 <div class="sidebar-overlay" id="sidebar-overlay"></div>
                 <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
                 <div class="mobile-menu-handle"></div>
-                <article class="content forms-page">
-                 <section class="section">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card card-block sameheight-item">
-                                    <form id="tambah-form" action="prosesTambahMateri.php" method="POST" enctype="multipart/form-data">
-                                        <div class="form-group">
-                                           <h3><b><?php echo $data['nama'] ?></b></h3>
+                <article class="content dashboard-page">
+                    <section class="section">
+                        <div class="data-table-area">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="data-table-list">
+                                            <div class="basic-tb-hd">
+                                                <h3>Data Laporan</h3>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table id="data-table-basic" class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nama</th>
+                                                            <th>NIS</th>
+                                                            <th>File</th>
+                                                            <th>Aksi</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                     <?php  
+                                                     while($data = mysqli_fetch_array($result)) {
+                                                        echo"<tr>";
+                                                        echo "<td>" .$data['nama_latihan']. "</td>";
+                                                        echo "<td>" .$data['nis']. "</td>";
+                                                        echo "<td>" .$data['berkas']. "</td>";
+                                                        echo "<td><a href='detailLaporanLatihan.php?id=$data[id_hasil_latihan]'><button title='unduh' class='btn btn-info btn-sm fa fa-download'> pdf </button>
+                                                        <button title='hapus' class='btn btn-danger btn-sm fa fa-trash'><a href='deleteLaporanLatihan.php?id=$data[id_hasil_latihan]'> hapus </button></td>";
+                                                        echo"</tr>";
+                                                    }
+                                                    ?>
+                                                </tfoot>
+                                            </table>
                                         </div>
-                                        <div class="form-group">
-                                            <?php echo $data['isi'] ?>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                </article>
+                    </div>
+                </section>
+            </article>
                 <footer class="footer">
                     <div></div>
                     <div class="footer-block author">
@@ -178,13 +202,7 @@ $data = mysqli_fetch_array($query);
         </script>
         <script src="js/vendor.js"></script>
         <script src="js/app.js"></script>
-        <script src="summernote-master/dist/summernote-lite.js"></script>
-        <script>
-          $(document).ready(function() {
-            $('.summernote').summernote({
-                airMode: false
-            });
-          })
-    </script>
+        <script src="js/data-table-act.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
     </body>
 </html>

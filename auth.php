@@ -5,13 +5,9 @@ session_start();
 if($_SESSION['level']==""){
     header("location:login.php");
 }
-if($_SESSION['level']!="guru") {
+if($_SESSION['level']!="siswa") {
     header("location:login.php");
 }
-include("config.php");
-$id = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM materi WHERE id_materi = $id");
-$data = mysqli_fetch_array($query);
 
 ?>
 <!doctype html>
@@ -28,7 +24,7 @@ $data = mysqli_fetch_array($query);
         <link rel="stylesheet" href="css/vendor.css">
         <!-- Theme initialization -->
         <link rel="stylesheet" href="css/app-blue.css">
-        <link rel="stylesheet" type="text/css" href="summernote-master/dist/summernote-lite.css">
+        
     </head>
     <body>
         <div class="main-wrapper">
@@ -69,11 +65,11 @@ $data = mysqli_fetch_array($query);
                         <nav class="menu">
                             <ul class="sidebar-menu metismenu" id="sidebar-menu">
                                 <li class="">
-                                    <a href="index.php">
+                                    <a href="indexSiswa.php">
                                         <i class="fa fa-home"></i> Beranda </a>
                                 </li>
                                 <li class="">
-                                    <a href="materi.php">
+                                    <a href="materiSiswa.php">
                                         <i class="fa fa-book"></i> Materi </a>
                                 </li>
                                 <li>
@@ -83,34 +79,26 @@ $data = mysqli_fetch_array($query);
                                     </a>
                                     <ul class="sidebar-nav">
                                         <li>
-                                            <a href="latihan.php"> Latihan </a>
+                                            <a href="latihanSiswa.php"> Latihan </a>
                                         </li>
                                         <li>
-                                            <a href="tugas.php"> Tugas </a>
-                                        </li>
-                                         <li>
-                                            <a href="hasil.php"> Hasil Tugas </a>
+                                            <a href="tugasSiswa.php"> Tugas </a>
                                         </li>
                                         <li>
-                                            <a href="hasil-latihan.php"> Hasil Latihan </a>
+                                            <a href="hasilSiswa.php"> Upload Hasil Tugas </a>
+                                        </li>
+                                        <li>
+                                            <a href="hasilLatihan.php"> Upload Hasil Latihan </a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="">
-                                    <a href="evaluasi.php">
-                                        <i class="fa fa-bar-chart"></i> Evaluasi  </a>
+                                    <a href="evaluasiSiswa.php">
+                                        <i class="fa fa-bar-chart"></i> Evaluasi </a>
                                 </li>
                                 <li class="">
-                                    <a href="nilai.php">
-                                        <i class="fa fa-list-alt"></i> Nilai </a>
-                                </li>
-                                <li class="">
-                                    <a href="siswa.php">
-                                        <i class="fa fa-user"></i> Siswa </a>
-                                </li>
-                                <li class="">
-                                    <a href="users.php">
-                                        <i class="fa fa-users"></i> Users </a>
+                                    <a href="nilaiSiswa.php">
+                                        <i class="fa fa-file-text"></i> Nilai </a>
                                 </li>
                                 <li class="">
                                     <a href="author.php">
@@ -131,19 +119,33 @@ $data = mysqli_fetch_array($query);
                 <div class="sidebar-overlay" id="sidebar-overlay"></div>
                 <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
                 <div class="mobile-menu-handle"></div>
-                <article class="content forms-page">
-                 <section class="section">
+                <article class="content dashboard-page">
+                    <section>
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="card card-block sameheight-item">
-                                    <form id="tambah-form" action="prosesTambahMateri.php" method="POST" enctype="multipart/form-data">
-                                        <div class="form-group">
-                                           <h3><b><?php echo $data['nama'] ?></b></h3>
+                            <div class="col-xl-12">
+                                <div class="card card-default">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <p class="title"> Widya Ayuningtyas</p>
                                         </div>
-                                        <div class="form-group">
-                                            <?php echo $data['isi'] ?>
+                                    </div>
+                                    <div class="card-block">
+                                        <div class="container" style="text-align: center;" >
+                                            <img src="images/auth.jpg" height="400" width="300">
                                         </div>
-                                    </form>
+                                        <div class="">
+                                        
+                                        </div>
+                                        <div align="justify">
+                                            <p><b>Pendidikan:</b> Sarjana (S1) Pendidikan Teknologi Informasi 2015. Fakultas Psikologi dan Ilmu Pendidikan Universitas Muhammadiyah Sidoarjo.</p>
+                                            <p><b>Aktivitas non-akademik:</b> aktif di organisasi kepemudaan dan makan - makan.</p>
+                                            <p>Pengalaman pertama di Fakultas Psikologi dan Ilmu Pendidikan di Universitas Muhammadiyah, Sidoarjo. Saya mendapat kesempatan untuk menjadi ketua himpunan mahasiswa prodi pendidikan teknologi informasi pada semester 3.</p>
+                                            <p>Saya juga diberi kesempatan oleh almarhum bapak kaprodi untuk dapat mengikuti semua kegiatan internasional yaitu KKN-PPl internasional di Negara Thailand Selatan tepatnya di Provinsi Yala pada tahun 2018.</p>
+                                            <p>Pada kali ini saya akan membuat suatu pengembangan dan penelitian yang berjudul Pengembangan E-Modul Interaktif untuk Meningkatkan Motivasi Belajar Siswa Pada Mata Pelajaran Pemrograman Dasar Kelas X TKJ di Smk Negeri 1 Gempol.</p>
+                                            <p>Saya membuat E-Modul interaktif ini bertujuan untuk mempermudah siswa dalam belajar dan mendalami materi pada mata pelajaran pemrograman dasar dan untuk menggerakkan gerakan adiwiyata untuk meminimalisir penggunaan kertas.</p> 
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -178,13 +180,5 @@ $data = mysqli_fetch_array($query);
         </script>
         <script src="js/vendor.js"></script>
         <script src="js/app.js"></script>
-        <script src="summernote-master/dist/summernote-lite.js"></script>
-        <script>
-          $(document).ready(function() {
-            $('.summernote').summernote({
-                airMode: false
-            });
-          })
-    </script>
     </body>
 </html>

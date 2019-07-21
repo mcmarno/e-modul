@@ -5,13 +5,17 @@ session_start();
 if($_SESSION['level']==""){
     header("location:login.php");
 }
-if($_SESSION['level']!="guru") {
+if($_SESSION['level']!="siswa") {
     header("location:login.php");
 }
-include("config.php");
-$id = $_GET['id'];
-$query = mysqli_query($conn, "SELECT * FROM materi WHERE id_materi = $id");
-$data = mysqli_fetch_array($query);
+include_once("config.php");
+$nama = $_SESSION['username'];
+$no_induk = mysqli_query($conn, "SELECT * FROM siswa WHERE nama = '$nama'");
+$data = mysqli_fetch_array($no_induk);
+$nis = $data['nis'];
+
+$n = mysqli_query($conn, "SELECT * FROM nilai WHERE no_induk = $nis");
+$nilai = mysqli_fetch_array($n);
 
 ?>
 <!doctype html>
@@ -28,7 +32,7 @@ $data = mysqli_fetch_array($query);
         <link rel="stylesheet" href="css/vendor.css">
         <!-- Theme initialization -->
         <link rel="stylesheet" href="css/app-blue.css">
-        <link rel="stylesheet" type="text/css" href="summernote-master/dist/summernote-lite.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
     </head>
     <body>
         <div class="main-wrapper">
@@ -48,7 +52,7 @@ $data = mysqli_fetch_array($query);
                                     <span class="name"> <?php echo $_SESSION['username']; ?> </span>
                                 </a>
                                 <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <a class="dropdown-item" href="gantiPassword.php">
+                                    <a class="dropdown-item" href="gantiPasswordSiswa.php">
                                         <i class="fa fa-key icon"></i> Ganti Password </a>
                                     <a class="dropdown-item" href="logout.php">
                                         <i class="fa fa-power-off icon"></i> Logout </a>
@@ -69,11 +73,11 @@ $data = mysqli_fetch_array($query);
                         <nav class="menu">
                             <ul class="sidebar-menu metismenu" id="sidebar-menu">
                                 <li class="">
-                                    <a href="index.php">
+                                    <a href="indexSiswa.php">
                                         <i class="fa fa-home"></i> Beranda </a>
                                 </li>
                                 <li class="">
-                                    <a href="materi.php">
+                                    <a href="materiSiswa.php">
                                         <i class="fa fa-book"></i> Materi </a>
                                 </li>
                                 <li>
@@ -83,37 +87,29 @@ $data = mysqli_fetch_array($query);
                                     </a>
                                     <ul class="sidebar-nav">
                                         <li>
-                                            <a href="latihan.php"> Latihan </a>
+                                            <a href="latihanSiswa.php"> Latihan </a>
                                         </li>
                                         <li>
-                                            <a href="tugas.php"> Tugas </a>
-                                        </li>
-                                         <li>
-                                            <a href="hasil.php"> Hasil Tugas </a>
+                                            <a href="tugasSiswa.php"> Tugas </a>
                                         </li>
                                         <li>
-                                            <a href="hasil-latihan.php"> Hasil Latihan </a>
+                                            <a href="hasilSiswa.php"> Upload Hasil Tugas </a>
+                                        </li>
+                                        <li>
+                                            <a href="hasilLatihan.php"> Upload Hasil Latihan </a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="">
-                                    <a href="evaluasi.php">
-                                        <i class="fa fa-bar-chart"></i> Evaluasi  </a>
+                                    <a href="evaluasiSiswa.php">
+                                        <i class="fa fa-bar-chart"></i> Evaluasi </a>
                                 </li>
                                 <li class="">
-                                    <a href="nilai.php">
-                                        <i class="fa fa-list-alt"></i> Nilai </a>
+                                    <a href="nilaiSiswa.php">
+                                        <i class="fa fa-file-text"></i> Nilai </a>
                                 </li>
                                 <li class="">
-                                    <a href="siswa.php">
-                                        <i class="fa fa-user"></i> Siswa </a>
-                                </li>
-                                <li class="">
-                                    <a href="users.php">
-                                        <i class="fa fa-users"></i> Users </a>
-                                </li>
-                                <li class="">
-                                    <a href="author.php">
+                                    <a href="auth.php">
                                         <i class="fa fa-phone"></i> Author </a>
                                 </li>
                             </ul>
@@ -131,19 +127,39 @@ $data = mysqli_fetch_array($query);
                 <div class="sidebar-overlay" id="sidebar-overlay"></div>
                 <div class="sidebar-mobile-menu-handle" id="sidebar-mobile-menu-handle"></div>
                 <div class="mobile-menu-handle"></div>
-                <article class="content forms-page">
-                 <section class="section">
+                <article class="content dashboard-page">
+                    <section>
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="card card-block sameheight-item">
-                                    <form id="tambah-form" action="prosesTambahMateri.php" method="POST" enctype="multipart/form-data">
-                                        <div class="form-group">
-                                           <h3><b><?php echo $data['nama'] ?></b></h3>
+                            <div class="col-xl-12">
+                                <div class="card card-info">
+                                    <div class="card-header">
+                                        <div class="header-block">
+                                            <p class="title"> HASIL EVALUASI</p>
                                         </div>
-                                        <div class="form-group">
-                                            <?php echo $data['isi'] ?>
-                                        </div>
-                                    </form>
+                                    </div>
+                                    <?php
+                                    //$a = $nilai['nilai_tugas'];
+                                    $b = $nilai['nilai_evaluasi'];
+                                    //$c = $a + $b;
+                                    //$r = $c / 2 ;
+                                    ?>
+                                    <div class="card-block">
+                                        NO INDUK : <?php echo $nis ?></p>
+                                        NAMA : <?php echo $_SESSION['username'] ?></p>
+                                       
+                                        NILAI EVALUASI : <?php echo $nilai['nilai_evaluasi'] ?></p>
+                                        
+                                    </div>
+                                    <?php
+                                    if($b >= 80)
+                                    {
+                                        $k = "<button type='button' class='btn btn-success'>Semangat terus belajar, tingkatkan kemampuanmu</button>";
+                                    }else
+                                    {
+                                        $k = "<button type='button' class='btn btn-warning'>Ayo, semangat terus belajarnya jangan putus asa</button>";
+                                    }
+                                    ?>
+                                    <div class="card-footer">note : <?php echo $k ?></div>
                                 </div>
                             </div>
                         </div>
@@ -178,13 +194,7 @@ $data = mysqli_fetch_array($query);
         </script>
         <script src="js/vendor.js"></script>
         <script src="js/app.js"></script>
-        <script src="summernote-master/dist/summernote-lite.js"></script>
-        <script>
-          $(document).ready(function() {
-            $('.summernote').summernote({
-                airMode: false
-            });
-          })
-    </script>
+        <script src="js/data-table-act.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
     </body>
 </html>

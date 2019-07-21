@@ -86,7 +86,10 @@ $result = mysqli_query($conn, "SELECT * FROM latihan ORDER BY id_latihan ASC");
                                             <a href="tugasSiswa.php"> Tugas </a>
                                         </li>
                                         <li>
-                                            <a href="hasilSiswa.php"> Hasil Laporan </a>
+                                            <a href="hasilSiswa.php"> Upload Hasil Tugas </a>
+                                        </li>
+                                        <li>
+                                            <a href="hasilLatihan.php"> Upload Hasil Latihan </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -97,6 +100,10 @@ $result = mysqli_query($conn, "SELECT * FROM latihan ORDER BY id_latihan ASC");
                                 <li class="">
                                     <a href="nilaiSiswa.php">
                                         <i class="fa fa-file-text"></i> Nilai </a>
+                                </li>
+                                <li class="">
+                                    <a href="auth.php">
+                                        <i class="fa fa-phone"></i> Author </a>
                                 </li>
                             </ul>
                         </nav>
@@ -154,8 +161,8 @@ $result = mysqli_query($conn, "SELECT * FROM latihan ORDER BY id_latihan ASC");
                     <div></div>
                     <div class="footer-block author">
                         <ul>
-                            <li> created by
-                                <a href="#">Widya Ayuningtyas</a>
+                            <li>
+                                Copyright &copy 2019 Pemrograman dasar
                             </li>
                         </ul>
                     </div>
